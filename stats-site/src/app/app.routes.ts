@@ -1,3 +1,5 @@
 import { Routes } from '@angular/router';
-
-export const routes: Routes = [];
+import { PerkListComponent } from './perk-list/perk-list.component';
+export const routes: Routes = [
+  { path:'AllPerks', component:PerkListComponent}
+];
