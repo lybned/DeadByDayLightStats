@@ -1,5 +1,12 @@
+<h1 class="text-3xl font-bold underline">
+  Hello world!
+</h1>
+
 <ul>
   <li *ngFor="let perk of perks">
+    <div>
+      <img [src]="getImageURL(perk.image)"/>
+    </div>
     {{ perk.name }} - {{ perk.description }}
   </li>
 </ul>

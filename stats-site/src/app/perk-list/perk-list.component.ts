@@ -26,4 +26,18 @@ export class PerkListComponent implements OnInit {
       }
     });
   }
+
+  capitalizeFirstLetter(str: string): string {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  
+  getImageURL(perk: string): string {
+    // Modify perk.img here as needed
+    // Example: You can append a suffix to the image filename
+    let temp = perk.split("_")[1]
+    console.log("temp",temp)
+    return "https://github.com/upsetdog/dbd-assets/raw/main/icons/iconPerks_" + this.capitalizeFirstLetter(temp)
+  }
+
+
 }
