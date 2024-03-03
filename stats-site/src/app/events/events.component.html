@@ -1,0 +1,15 @@
+<p>events works!</p>
+
+<div *ngIf="events.length > 0; else noItems">
+  <div className="mb-3" *ngFor="let event of events">
+    <p>{{event.name}}</p>
+    <p>{{event.type}}</p>
+    <p>{{getDate(event.start)}}</p>
+    <p>{{getDate(event.end)}}</p>
+  </div>  
+</div>
+
+<ng-template #noItems>
+  <!-- Render this when the list is empty -->
+  <p>No items found</p>
+</ng-template>

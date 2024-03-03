@@ -24,6 +24,7 @@ export class PerkListComponent implements OnInit {
       for (const key in perks) {
         this.perks.push(perks[key])
       }
+      console.log(perks)
     });
   }
 
