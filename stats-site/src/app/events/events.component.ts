@@ -2,11 +2,13 @@ import { NgFor } from '@angular/common';
 import { Component, EnvironmentInjector, OnInit } from '@angular/core';
 import { Event } from '../models/Event'; // Assuming Perk class is defined in a separate file
 import { EventService } from '../services/events.service';
+import { CommonModule } from '@angular/common';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor,CommonModule],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
@@ -19,7 +21,9 @@ export class EventsComponent {
 
 
   ngOnInit(): void {
+
     this.loadEvents();
+    initFlowbite();    
   }
 
   loadEvents(){
@@ -34,12 +38,22 @@ export class EventsComponent {
           this.futureEvents.push(events[i])
         }
       }
-      this.events = events
     })
   }
 
   getDate(time:number){
     console.log()
-    return new Date(time * 1000).toString()
+    const date = new Date(time * 1000);
+
+    // Get the year, month, and day
+    const year = date.getFullYear();
+    // Month is zero-based, so add 1 to get the correct month
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+
+    // Format the year, month, and day
+    const formattedDate = year + '/' + (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day;
+
+    return formattedDate;
   }
 }
