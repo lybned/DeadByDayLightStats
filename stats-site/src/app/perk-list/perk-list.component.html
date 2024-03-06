@@ -19,7 +19,7 @@
             <img [src]="getImageURL(perk.image)" class="absolute w-32 left-0 top-0"/>      
           </div>
         </td>
-        <td class="p-5">{{  perk.description }}</td>
+        <td [innerHTML]="getFillInDescription(perk)" class="p-5"></td>
       </tr>
     </tbody>
   </table>  
