@@ -37,7 +37,7 @@ export class PerkListComponent implements OnInit {
     // Example: You can append a suffix to the image filename
     let temp = perk.split("_")[1]
     console.log("temp",temp)
-    return "https://github.com/upsetdog/dbd-assets/raw/main/icons/iconPerks_" + this.capitalizeFirstLetter(temp)
+    return "assets/icons/iconPerks_" + this.capitalizeFirstLetter(temp)
   }
 
 

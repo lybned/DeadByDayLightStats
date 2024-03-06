@@ -2,11 +2,25 @@
   Hello world!
 </h1>
 
-<ul>
-  <li *ngFor="let perk of perks">
-    <div>
-      <img [src]="getImageURL(perk.image)"/>
-    </div>
-    {{ perk.name }} - {{ perk.description }}
-  </li>
-</ul>
+<div class="flex justify-center">
+  <table class="table-auto w-5/6 border-separate border-spacing-2 border">
+    <thead class="bg-slate-400">
+      <tr>
+        <th>Perk</th>
+        <th>Info</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let perk of perks" class="bg-slate-300">
+        <td class="p-5">
+          <p class="text-center w-32 mb-2 font-bold">{{ perk.name }}</p>
+          <div class="w-fit relative">
+            <img src="assets/perk-background.png" class="relative w-32 left-0 top-0"/>      
+            <img [src]="getImageURL(perk.image)" class="absolute w-32 left-0 top-0"/>      
+          </div>
+        </td>
+        <td class="p-5">{{  perk.description }}</td>
+      </tr>
+    </tbody>
+  </table>  
+</div>
