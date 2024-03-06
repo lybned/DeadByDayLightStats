@@ -24,7 +24,7 @@ export class PerkListComponent implements OnInit {
       for (const key in perks) {
         this.perks.push(perks[key])
       }
-      console.log(perks)
+      //console.log(perks)
     });
   }
 
@@ -35,9 +35,11 @@ export class PerkListComponent implements OnInit {
   getImageURL(perk: string): string {
     // Modify perk.img here as needed
     // Example: You can append a suffix to the image filename
-    let temp = perk.split("_")[1]
+    let temp = this.modifyStrings(perk.split(" "))
+    //console.log(temp)
+    let fullName = temp.reduce(function(a,b){return a+b})
     //console.log("temp",temp)
-    return "assets/icons/iconPerks_" + this.capitalizeFirstLetter(temp)
+    return "assets/icons/IconPerks_" + this.removeSpecialCharacters(this.firstLetterLower(this.capitalizeFirstLetter(fullName))) + ".png"
   }
 
   colorLevelText(text: string, level:number) : string{
@@ -76,6 +78,37 @@ export class PerkListComponent implements OnInit {
     return description
   }
 
+  firstLetterLower(str : string): string {
+    // Convert first letter to lowercase and concatenate with the rest of the string
+    return str.charAt(0).toLowerCase() + str.slice(1);
+  }
 
+
+  modifyStrings(arr: string[]): string[] {
+    if (!arr || arr.length === 0) {
+        return arr; // Return empty array if input is empty
+    }
+
+    const modifiedArr = arr.map((str, index) => {
+        if (index === 0) {
+            // Convert first string's first letter to lowercase
+            return str.charAt(0).toLowerCase() + str.slice(1) ;
+        } else {
+            // Convert rest of the strings' first letter to uppercase
+            return str.charAt(0).toUpperCase() + str.slice(1) ;
+        }
+    });
+
+    return modifiedArr;
+  }
+
+  removeSpecialCharacters(inputString: string): string {
+    if (!inputString) {
+        return inputString; // Return the string as is if it's empty or null
+    }
+    const result = inputString.replace(/[^a-zA-Z0-9- ]/g, "")
+
+    return result;
+  }
 
 }

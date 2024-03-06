@@ -16,7 +16,7 @@
           <p class="text-center w-32 mb-2 font-bold">{{ perk.name }}</p>
           <div class="w-fit relative">
             <img src="assets/perk-background.png" class="relative w-32 left-0 top-0"/>      
-            <img [src]="getImageURL(perk.image)" class="absolute w-32 left-0 top-0"/>      
+            <img [src]="getImageURL(perk.name)" class="absolute w-32 left-0 top-0"/>      
           </div>
         </td>
         <td [innerHTML]="getFillInDescription(perk)" class="p-5"></td>
