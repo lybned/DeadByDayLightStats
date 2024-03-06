@@ -35,7 +35,7 @@ export class PerkListComponent implements OnInit {
   getImageURL(perk: string): string {
     // Modify perk.img here as needed
     // Example: You can append a suffix to the image filename
-    let temp = this.modifyStrings(perk.split(" "))
+    let temp = this.modifyStrings(perk.replace("&", "And").split(" "))
     //console.log(temp)
     let fullName = temp.reduce(function(a,b){return a+b})
     //console.log("temp",temp)
