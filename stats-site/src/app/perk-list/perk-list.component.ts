@@ -12,6 +12,7 @@ import { NgFor } from '@angular/common';
 })
 export class PerkListComponent implements OnInit {
   perks: Perk[] = [];
+  perksAll: Perk[] = [];
 
   constructor(private perkService: PerkService) { }
 
@@ -23,8 +24,9 @@ export class PerkListComponent implements OnInit {
     this.perkService.getPerks().subscribe( (perks) => {
       for (const key in perks) {
         this.perks.push(perks[key])
+        this.perksAll.push(perks[key])
       }
-      //console.log(perks)
+      console.log(perks)
     });
   }
 
@@ -32,14 +34,22 @@ export class PerkListComponent implements OnInit {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
   
+  survivorPerks(){
+    this.perks = this.perksAll.filter(x => x.role === "survivor")
+  }
+
+  killerPerks(){
+    this.perks = this.perksAll.filter(x => x.role === "killer")
+  }
+
   getImageURL(perk: string): string {
     // Modify perk.img here as needed
     // Example: You can append a suffix to the image filename
-    let temp = this.modifyStrings(perk.replace("&", "And").split(" "))
-    //console.log(temp)
-    let fullName = temp.reduce(function(a,b){return a+b})
-    //console.log("temp",temp)
-    return "assets/icons/IconPerks_" + this.removeSpecialCharacters(this.firstLetterLower(this.capitalizeFirstLetter(fullName))) + ".png"
+    let temp = perk.split("_")
+    if (temp.length == 2){
+      temp[1] = this.capitalizeFirstLetter(temp[1])
+    }
+    return "assets/" + this.capitalizeFirstLetter(temp.join("_"))
   }
 
   colorLevelText(text: string, level:number) : string{
