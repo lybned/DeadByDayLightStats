@@ -1,0 +1,7 @@
+.survivorTag{
+  /*background-image: url("/assets/dbd-killer-tier-list.jpg");*/
+  height: 200px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+}
