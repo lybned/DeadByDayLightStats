@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Survivor } from '../models/Survivor'; // Assuming Perk class is defined in a separate file
-import { SurvivorService } from '../services/survivor.service';
+import { SurvivorService } from '../services/character.service';
 import { NgFor } from '@angular/common';
 
 
@@ -12,7 +12,7 @@ import { NgFor } from '@angular/common';
   styleUrl: './survivor.component.css'
 })
 export class SurvivorComponent implements OnInit {
-  survivor: Survivor[] = [];
+  survivors: Survivor[] = [];
 
   constructor(private survivorService: SurvivorService) { }
 
@@ -21,8 +21,18 @@ export class SurvivorComponent implements OnInit {
   }
 
   loadSurvivors(){
-    this.survivor = this.survivorService.getSurvivors()
-    console.log(this.survivor)
+    this.survivorService.getCharacter().subscribe((character: any) => {
+      for (const key in character) {
+        const current = character[key]     
+        if (current.role === "survivor"){
+          this.survivors.push(current)
+        }
+      }
+    })
+  }
+
+  getImageURL(url : string){
+    return "assets/" + url
   }
 
 }

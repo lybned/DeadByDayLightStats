@@ -1,18 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
+import {Survivor} from '../models/Survivor'
 @Injectable({
   providedIn: 'root'
 })
-export class KillerService {
+export class SurvivorService {
 
   private apiUrl = 'https://dbd.tricky.lol/api/characters'; // replace with your API URL
 
   constructor(private http: HttpClient) { }
 
-  getKillers(): Observable<{}> {
-    //console.log(this.http.get<Perk[]>(this.apiUrl))
+  getCharacter(): Observable<{}> {
     return this.http.get<{}>(this.apiUrl);
   }
 }

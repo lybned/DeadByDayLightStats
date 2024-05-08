@@ -4,7 +4,7 @@
 @tailwind utilities;
 
 html, body{
-  background-color: #212529;
+  background-color: #0c1114;
   height:100%;
   width:100%;
   background-image: url("/assets/dbd-forest-background.jpg");
