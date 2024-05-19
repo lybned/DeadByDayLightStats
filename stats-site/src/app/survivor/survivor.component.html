@@ -1,6 +1,8 @@
-<div class="grid grid-cols-4 gap-7 p-10">
-  <a *ngFor="let survivor of survivors" class="bg-gray-900 hover:scale-110 transition duration-350 ease-in-out cursor-pointer">
-    <img [src]="getImageURL(survivor.image)" class=""/>    
-  </a> 
+<div class="flex justify-center">
+  <div class="grid grid-cols-4 gap-7 p-10 w-4/5">
+    <a *ngFor="let survivor of survivors" class="bg-gray-900 hover:scale-105 transition duration-350 ease-in-out cursor-pointer bg-opacity-50">
+      <img [src]="getImageURL(survivor.image)" class=""/>    
+    </a>     
+  </div> 
 </div> 
 
